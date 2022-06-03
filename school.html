@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.gg{
+			height: 175px;
+			width: 200px;
+			position: absolute;
+			transition: 1s;
+			background-image: url(Eric-cartman.png);
+			background-size: 100% 100%;
+		}
+		.zadira{
+			height: 175px;
+			width: 150px;
+			position: absolute;
+			transition: 1s;
+			background-size: 100% 100%;
+			background-image: url(1.jpg);
+		}
+		.fizruk{
+			height: 175px;
+			width: 150px;
+			background:  yellow;
+			position: absolute;
+			transition: 5s;
+		}
+	</style>
+</head>
+<body>
+	<div class="first" style="height: 953px; background-color: red;">
+		<button class="btn" style="position: absolute; top: 300px; left: 900px;">Начать игру!</button>
+	</div>
+	<div class="sport" style="height: 953px; background-color: green; display: none;">
+		<div class="dialogue" style="height: 200px; width: 500px; background-color: white; position: absolute; top: 50px; left: 660px; border-radius: 5px;">
+			<h4>Это последний урок в этой четверти! Чтобы его завершить тебе нужно прибежать первым до финиша, и еще ты получишь награду от физрука.</h4>
+			<button class="btn1" style="position: absolute; left: 450px; top: 160px;">></button>
+		</div>
+		<div class="dialogue1" style="height: 200px; width: 500px; background-color: white; position: absolute; top: 50px; left: 660px; border-radius: 5px; display: none;">
+			<h4>Молодец, Эрик!Ты выиграл в беге! За это я тебе даю шоколадку. Надеюсь он вкусный.</h4>
+			<button class="btn2" style="position: absolute; left: 450px; top: 160px;">></button>
+		</div>
+		<div class="dialogue2" style="height: 200px; width: 500px; background-color: white; position: absolute; top: 50px; left: 660px; border-radius: 5px; display: none;">
+			<h4>До следующего учебного года!</h4>
+			<button class="btn3" style="position: absolute; left: 450px; top: 160px;">></button>
+		</div>
+		<div class="dialogue3" style="height: 200px; width: 500px; background-color: white; position: absolute; top: 50px; left: 660px; border-radius: 5px; display: none;">
+			<h4>*Последний звонок*</h4>
+			<button class="btn4" style="position: absolute; left: 450px; top: 160px;">></button>
+		</div>
+		<div class="gg" style="top: 700px; left: 100px;"></div>
+		<div class="zadira" style="top: 500px; left: 100px;"></div>
+		<div class="fizruk" style="top: 700px; left: 100px; display: none;"></div>
+		<div class="finish" style="background-color: aquamarine; position: absolute; width: 10px; height: 650px; left: 1700px; top: 300px;"></div>
+	</div>
+	<div class="coridor" style="height: 953px; background-color: pink; display: none;">
+		<div class="dialogue4" style="height: 200px; width: 500px; background-color: white; position: absolute; top: 50px; left: 660px; border-radius: 5px; display: none;">
+			<h4>*Чтобы выйти из школы тебе нужно пройти вперед по коридору.*</h4>
+			<button class="btn5" style="position: absolute; left: 450px; top: 160px;">></button>
+		</div>
+		<div class="gg" style="top: 700px; left: 200px;"></div>
+		<div class="input" style="left: 1900px; position: absolute; top: 300px; height: 650px; background-color: darkblue; width: 10px;"></div>
+	</div>
+	<script type="text/javascript">
+		let gg = document.querySelector(".gg")
+		let zadira = document.querySelector(".zadira")
+		let first = document.querySelector(".first")
+		let sport = document.querySelector(".sport")
+		let finish = document.querySelector(".finish")
+		let btn = document.querySelector(".btn")
+		let btn1 = document.querySelector(".btn1")
+		let dialogue = document.querySelector(".dialogue")
+		let dialogue1 = document.querySelector(".dialogue1")
+		let dialogue2 = document.querySelector(".dialogue2")
+		let dialogue3 = document.querySelector(".dialogue3")
+		let dialogue4 = document.querySelector(".dialogue4")
+		let fizruk = document.querySelector(".fizruk")
+		let btn2 = document.querySelector(".btn2")
+		let btn3 = document.querySelector(".btn3")
+		let btn4 = document.querySelector(".btn4")
+		let btn5 = document.querySelector(".btn5")
+		let coridor = document.querySelector(".coridor")
+		let input = document.querySelector(".input")
+
+
+		zadiraLeft1= 125
+		ggLeft = 0;
+		zadiraLeft = 0;
+		finishLeft = 1700
+		inputLeft = 1900;
+		ggLeft1 = 200
+
+		btn.onclick = function(){
+			first.style.display ="none"
+			sport.style.display ="block"
+		}
+		btn1.onclick = function(){
+			dialogue.style.display ="none"
+			dialogue.style.opacity ="0"
+			if(dialogue.style.display =="none"){
+				let interval = setInterval(run, 750)
+				gg.onclick = function(){
+					ggLeft = ggLeft + 125; 
+					gg.style.left = ggLeft +"px"
+					if(ggLeft >= finishLeft){
+						alert("Ты выиграл!")
+						clearInterval(interval)
+						zadira.style.display ="none"
+						fizruk.style.display ="block"
+						if(fizruk.style.display =="block"){
+							gg.style.transition ="5s"
+							gg.style.left ="300px"
+						}
+						if(gg.style.left =="300px"){
+							let dialogue = function(){
+								dialogue1.style.display ="block"
+							}					
+							setTimeout(dialogue, 4000)
+							btn2.onclick = function(){
+								dialogue1.style.display ="none"
+								dialogue2.style.display ="block"
+							}
+							btn3.onclick = function(){
+								dialogue2.style.display ="none"
+								fizruk.style.display ="none"
+								dialogue3.style.display ="block"
+							}
+							btn4.onclick = function(){
+								dialogue3.style.display ="none"
+								if(dialogue3.style.display =="none"){
+									sport.style.display ="none"
+									coridor.style.display ="block"
+								}
+								if(coridor.style.display =="block"){
+									let dialogue4block = function(){
+										dialogue4.style.display ="block"
+									}
+									setTimeout(dialogue4block, 1500)
+									btn5.onclick = function(){
+										dialogue4.style.display ="none"
+									}
+								}
+							}
+						}
+					}			
+				}
+			}
+		}
+		let run = function(){
+			zadiraLeft1 = zadiraLeft1 + 150;
+			zadira.style.left = zadiraLeft1 +"px"
+		}
+	</script>
+</body>
+</html>
